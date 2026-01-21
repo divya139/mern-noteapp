@@ -3,11 +3,17 @@ import dotenv from 'dotenv';
 import connectDB from './config/db.js';
 import notesRouter from './routes/notesRouter.js';
 import rateLimiter from './middleware/rateLimiter.js';
+import cors from 'cors';
 
 dotenv.config();
 const app = express();
 const PORT = process.env.PORT;
 
+app.use(cors({
+  origin: 'http://localhost:5173', // Adjust according to your frontend URL
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  credentials: true,
+}))
 
 app.use(express.json());
 
