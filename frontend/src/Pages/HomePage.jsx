@@ -25,7 +25,7 @@ const HomePage = () => {
          setLoading(true);
          try {
            const response = await api.get('/notes');
-           if (response.statusText === 'OK') {
+           if (response.status === 200) {
              const data = await response.data;
              console.log(data);
              setNotes(data);
